@@ -18,7 +18,7 @@ torch_transforms = transforms.Compose(
 )
 
 print('Load pre-trained MODNet...')
-pretrained_ckpt = './pretrained/000006.ckpt'
+pretrained_ckpt = './pretrained/modnet_webcam_portrait_matting.ckpt'
 modnet = MODNet(backbone_pretrained=False)
 modnet = nn.DataParallel(modnet)
 
@@ -33,7 +33,7 @@ else:
 
 modnet.eval()
 print('Init WebCam...')
-cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 

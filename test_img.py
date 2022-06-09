@@ -11,7 +11,7 @@ from tkinter.filedialog import askopenfilename
 
 image_names = askopenfilename()
 input_path = image_names
-ckpt_path = 'D:/DO_AN_CN/test_cam/MODNet/pretrained/000006.ckpt'
+ckpt_path = './pretrained/000006.ckpt'
 def remove_background(img):
     # check input arguments
     if not os.path.exists(input_path):
