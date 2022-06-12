@@ -7,11 +7,12 @@ import torch.nn.functional as F
 import torchvision.transforms as transforms
 from src.models.modnet import MODNet
 from tkinter.filedialog import askopenfilename
-
+import cv2
 
 image_names = askopenfilename()
 input_path = image_names
-ckpt_path = './pretrained/000006.ckpt'
+ckpt_path = './pretrained/modnet_photographic_portrait_matting.ckpt'
+background_path = askopenfilename()
 def remove_background(img):
     # check input arguments
     if not os.path.exists(input_path):
@@ -89,7 +90,7 @@ def remove_background(img):
     return matte
 
 
-def combined_display(image, matte):
+def combined_display(image, matte,background):
     # calculate display resolution
     w, h = image.width, image.height
     rw, rh = 800, int(h * 800 / (3 * w))
@@ -102,7 +103,7 @@ def combined_display(image, matte):
     elif image.shape[2] == 4:
         image = image[:, :, 0:3]
     matte = np.repeat(np.asarray(matte)[:, :, None], 3, axis=2) / 255
-    foreground = image * matte + np.full(image.shape, 255) * (1 - matte)
+    foreground = image * matte + background * (1 - matte)
     # combine image, foreground, and alpha into one line
     combined = np.concatenate((image, foreground, matte * 255), axis=1)
     combined = Image.fromarray(np.uint8(combined)).resize((rw, rh))
@@ -110,6 +111,8 @@ def combined_display(image, matte):
 
 
 image = Image.open(input_path)
+background = cv2.imread(background_path)
+background = cv2.resize(background, image.size)
 matte = remove_background(image)
-img = combined_display(image, matte)
+img = combined_display(image, matte, background)
 img.show()
