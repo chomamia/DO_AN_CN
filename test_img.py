@@ -11,7 +11,7 @@ import cv2
 
 image_names = askopenfilename()
 input_path = image_names
-ckpt_path = './pretrained/modnet_photographic_portrait_matting.ckpt'
+ckpt_path = './pretrained/New_000006.ckpt'
 background_path = askopenfilename()
 def remove_background(img):
     # check input arguments
@@ -105,7 +105,7 @@ def combined_display(image, matte,background):
     matte = np.repeat(np.asarray(matte)[:, :, None], 3, axis=2) / 255
     foreground = image * matte + background * (1 - matte)
     # combine image, foreground, and alpha into one line
-    combined = np.concatenate((image, foreground, matte * 255), axis=1)
+    combined = np.concatenate((image,foreground, matte * 255), axis=1)
     combined = Image.fromarray(np.uint8(combined)).resize((rw, rh))
     return combined
 
