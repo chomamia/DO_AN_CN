@@ -26,7 +26,7 @@ torch_transforms = transforms.Compose(
 )
 
 print('Load pre-trained MODNet...')
-pretrained_ckpt = './pretrained/modnet_photographic_portrait_matting.ckpt'
+pretrained_ckpt = './pretrained/New_000006_13_6.ckpt'
 modnet = MODNet(backbone_pretrained=False)
 modnet = nn.DataParallel(modnet)
 
@@ -41,7 +41,7 @@ else:
 
 modnet.eval()
 print('Init WebCam...')
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
@@ -57,7 +57,6 @@ while (True):
         background_img = frame_np
         background_img = cv2.resize(background_img, (672,512))
         background_img = cv2.blur(background_img, (50,20))
-
         background_img = np.asarray(0.8*background_img - 5, dtype=int)   # cast pixel values to int
         background_img[background_img>255] = 255
         background_img[background_img<0] = 0
