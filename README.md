@@ -7,12 +7,10 @@
 <img src="doc/gif/homepage_demo.gif" width="100%">
 
 <div align="center">MODNet is a model for <b>real-time</b> portrait matting with <b>only RGB image input</b></div>
-<div align="center">MODNet是一个<b>仅需RGB图片输入</b>的<b>实时</b>人像抠图模型</div>
 
 <br />
 
 <p align="center">
-  <a href="#online-application-在线应用">Online Application (在线应用)</a> |
   <a href="#research-demo">Research Demo</a> |
   <a href="https://arxiv.org/pdf/2011.11961.pdf">AAAI 2022 Paper</a> |
   <a href="https://youtu.be/PqJ3BRHX3Lc">Supplementary Video</a>
@@ -31,13 +29,12 @@
 ---
 
 
-## Online Application (在线应用)
+## Online Application 
 
 A **Single** model! Only **7M**! Process **2K** resolution image with a **Fast** speed on common PCs or Mobiles! **Beter** than research demos!  
 Please try online portrait image matting via [this website](https://sight-x.cn/portrait_matting) or on [my personal homepage](https://zhke.io/#/?modnet_demo)!    
 
-**单个**模型！大小仅为**7M**！可以在普通PC或移动设备上**快速**处理具有**2K**分辨率的图像！效果比研究示例**更好**！  
-请通过[此网站](https://sight-x.cn/portrait_matting)或[我的主页](https://zhke.io/#/?modnet_demo)在线尝试图片抠像！
+
 
 
 ## Research Demo
